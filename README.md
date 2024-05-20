@@ -14,7 +14,7 @@ This project is a web application built with Ruby on Rails for managing forms an
 
 1. Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/NiravDarji0612/google_forms_clone.git
     ```
 
 2. Install dependencies:
