@@ -1,0 +1,21 @@
+<div class="nested-fields">
+	<%= form.label :title %>
+	<%= form.text_field :title %>
+
+	<%= form.label :type_of_question %>
+	<%= form.select(:type_of_question, options_for_select([["Text"]])) %>
+
+	<%= form.label :image %>
+	<%= form.file_field :image %>
+
+	<h4>Options</h4>
+	<div id="options">
+			<%= form.fields_for :options do |option_form| %>
+					<%= render 'option_fields', form: option_form %>
+			<% end %>
+			<div class="links">
+					<%= link_to_add_association 'Add Option', form, :options, form_name: 'form' %>
+			</div>
+	</div>
+	<%= link_to_remove_association "remove question", form %>
+</div>

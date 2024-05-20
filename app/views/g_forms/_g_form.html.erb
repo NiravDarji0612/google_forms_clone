@@ -1,0 +1,29 @@
+<div id="<%= dom_id g_form %>">
+  <p>
+    <strong>Form Title:</strong>
+    <%= g_form.title %>
+  </p>
+
+  <p>
+    <strong>Form Description:</strong>
+    <%= g_form.description %><br>
+  </p>
+
+    <p>
+    <strong>Form image:</strong>
+    <%= g_form.image.attached? ? image_tag(g_form.image) : '' %>
+  </p>
+  <h2>Questions</h2>
+  <div>
+    <% g_form.questions.each do |question| %>
+      <br>
+      Question: <%= question.title %><br>
+      Image: <%= question.image.attached? ? image_tag(question.image) : '' %><br>
+      Type: <%= question.type_of_question %><br>
+      <% question.options.each do |option| %>
+      <%= option.title %><br>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

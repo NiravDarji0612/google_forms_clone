@@ -1,0 +1,41 @@
+<%= form_with(model: g_form) do |form| %>
+  <% if g_form.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(g_form.errors.count, "error") %> prohibited this g_form from being saved:</h2>
+
+      <ul>
+        <% g_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+    <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="questions">
+    <% form.fields_for :questions do |form| %>
+      <%= render 'question_fields', form: form %>
+    <% end %>
+  </div>
+  <div class="links">
+    <%= link_to_add_association "add questions", form, :questions, form_name: 'form', data: {association_insertion_node: '.questions', association_insertion_method: :append} %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

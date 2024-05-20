@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>G forms</h1>
+
+<div id="g_forms">
+  <% @g_forms.each do |g_form| %>
+    <%= render g_form %>
+    <p>
+      <%= link_to "Show this g form", g_form %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New g form", new_g_form_path %>

@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @g_form %>
+
+<div>
+  <%= link_to "Edit this g form", edit_g_form_path(@g_form) %> |
+  <%= link_to "Back to g forms", g_forms_path %> |
+  <%= link_to "Responses", g_form_responses_path(@g_form)%>
+
+  <%= button_to "Destroy this g form", @g_form, method: :delete %>
+</div>

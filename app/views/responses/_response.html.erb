@@ -1,0 +1,11 @@
+<div>
+  <h3>Response from <%= response.sent_by %></h3>
+	<% response.answers.each do |question_id, option_ids| %>
+		<div>
+			<strong><%= find_question(question_id) %>:</strong>
+			<% option_ids.each do |option_id| %>
+				<p><%= find_option(option_id) %></p>
+			<% end %>
+		</div>
+	<% end %>
+</div>
