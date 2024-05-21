@@ -1,11 +1,24 @@
 <div>
   <h3>Response from <%= response.sent_by %></h3>
-	<% response.answers.each do |question_id, option_ids| %>
-		<div>
-			<strong><%= find_question(question_id) %>:</strong>
-			<% option_ids.each do |option_id| %>
-				<p><%= find_option(option_id) %></p>
-			<% end %>
-		</div>
-	<% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% response.answers.each do |question_id, answer| %>
+        <tr>
+          <td><%= find_question(question_id) %></td>
+          <td><%= display_answer(question_id, answer) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+
+<%= link_to "Back to g forms", g_forms_path %> |
+
+
+

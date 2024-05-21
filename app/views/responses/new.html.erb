@@ -5,14 +5,9 @@
   <% @form.questions.each do |question| %>
     <div>
       <h4><%= question.title %></h4>
-      <% question.options.each do |option| %>
-        <div>
-          <%= label_tag "response[answers][#{question.id}][]", option.title %>
-          <%= check_box_tag "response[answers][#{question.id}][]", option.id %>
-        </div>
-      <% end %>
+      <%= render_question_options(question) %>
     </div>
   <% end %>
 
-  <%= form.submit %>
+  <%= form.submit 'Submit Response' %>
 <% end %>
