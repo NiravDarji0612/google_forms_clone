@@ -1,29 +1,26 @@
-<div id="<%= dom_id g_form %>">
-  <p>
-    <strong>Form Title:</strong>
-    <%= g_form.title %>
-  </p>
+<h1><%= g_form.title %></h1>
+<p><%= g_form.description %></p>
 
-  <p>
-    <strong>Form Description:</strong>
-    <%= g_form.description %><br>
-  </p>
+<%= link_to 'Share Form', new_g_form_response_path(g_form) %>
 
-    <p>
-    <strong>Form image:</strong>
-    <%= g_form.image.attached? ? image_tag(g_form.image) : '' %>
-  </p>
-  <h2>Questions</h2>
-  <div>
-    <% g_form.questions.each do |question| %>
-      <br>
-      Question: <%= question.title %><br>
-      Image: <%= question.image.attached? ? image_tag(question.image) : '' %><br>
-      Type: <%= question.type_of_question %><br>
-      <% question.options.each do |option| %>
-      <%= option.title %><br>
+<h2>Responses</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Respondent</th>
+      <% g_form.questions.each do |question| %>
+        <th>Question : <%= question.title %></th>
       <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% g_form.responses.each do |response| %>
+      <tr>
+        <td><%= response.sent_by %></td>
+        <% response.answers.each do |question_id, answer| %>
+          <td><%= display_answer(question_id, answer) %></td>
+        <% end %>
+      </tr>
     <% end %>
-  </div>
-
-</div>
+  </tbody>
+</table>
