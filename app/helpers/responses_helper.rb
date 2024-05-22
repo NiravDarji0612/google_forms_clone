@@ -9,13 +9,15 @@ module ResponsesHelper
       options = Option.where(id: answer)
       options.map(&:title).join(', ')
     elsif question.type_of_question == 'radio_button'
-      Option.find(answer).title
+      Option.find_by(id: answer)&.title || answer
     else
       answer
     end
   end
 
   def render_question_options(question)
+    return render_text_field(question) if question.options.empty?
+
     case question.type_of_question
     when 'multiselect'
       render_multiselect_options(question)
